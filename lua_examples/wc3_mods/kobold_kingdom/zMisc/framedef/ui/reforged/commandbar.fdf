@@ -1,0 +1,155 @@
+Texture "CommandBarTemplate" {
+	Width 0.182,
+	Height 0.091,
+	TexCoord 0, 1, 0, 1,
+	AlphaMode "ALPHAKEY",
+	Anchor TOPLEFT, 0.0, 0.0,
+}
+
+Frame "SIMPLEBUTTON" "CommandButtonTemplate" {
+	Width 0.0265,
+	Height 0.0265,	
+}
+
+Frame "SIMPLEBUTTON" "CommandButtonTemplate_Row5" {
+	Width 0.032,
+	Height 0.032,	
+}
+
+Frame "SIMPLEBUTTON" "CommandButtonTemplate_Row7" {
+	Width 0.0225,
+	Height 0.0225,	
+}
+
+Frame "SIMPLEFRAME" "CommandBarFrame" {
+    UseActiveContext,
+    SetAllPoints,
+	Width 0.24,
+	Height 0.105,
+	
+	Frame "SIMPLEBUTTON" "CommandButton_0" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0, 0.0,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_1" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0279, 0.0,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_2" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0559, 0.0,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_3" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0839, 0.0,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_4" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1119, 0.0,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_5" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1399, 0.0,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_6" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1679, 0.0,
+	}		
+		
+	Frame "SIMPLEBUTTON" "CommandButton_7" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0, -0.0285,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_8" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0279, -0.0285,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_9" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0559, -0.0285,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_10" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0839, -0.0285,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_11" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1119, -0.0285,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_12" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1399, -0.0285,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_13" INHERITS "CommandButtonTemplate" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1679, -0.0285,
+	}	
+	
+	
+	Frame "SIMPLEBUTTON" "CommandButton_0a" INHERITS "CommandButtonTemplate_Row5" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0, 0.001,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_1a" INHERITS "CommandButtonTemplate_Row5" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0337, 0.001,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_2a" INHERITS "CommandButtonTemplate_Row5" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0674, 0.001,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_3a" INHERITS "CommandButtonTemplate_Row5" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1010, 0.001,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_4a" INHERITS "CommandButtonTemplate_Row5" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1348, 0.001,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_5a" INHERITS "CommandButtonTemplate_Row5" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1685, 0.001,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_6a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.2021, 0.001,
+	}		
+		
+	Frame "SIMPLEBUTTON" "CommandButton_7a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0, -0.033,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_8a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0242, -0.033,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_9a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0484, -0.033,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_10a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0725, -0.033,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_11a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.0968, -0.033,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_12a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1210, -0.033,
+	}
+	
+	Frame "SIMPLEBUTTON" "CommandButton_13a" INHERITS "CommandButtonTemplate_Row7" {
+		SetPoint TOPLEFT, "CommandBarFrame", TOPLEFT, 0.1451, -0.033,
+	}	
+}
+
+Frame "SIMPLEFRAME" "SimpleCommandBarGrid" {
+    UseActiveContext,
+    SetAllPoints,
+	
+    Texture "Grid_5_7" INHERITS "CommandBarTemplate"{
+        File "UI/Console/Reforged/MinHudCommandGrid_5_7.blp",
+    }
+	
+    Texture "Grid_6_6" INHERITS "CommandBarTemplate"{
+        File "UI/Console/Reforged/MinHudCommandGrid_6_6.blp",
+    }
+}

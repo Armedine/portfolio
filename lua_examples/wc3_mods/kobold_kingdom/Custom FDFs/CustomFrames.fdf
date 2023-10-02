@@ -1,0 +1,467 @@
+IncludeFile "UI\FrameDef\Glue\BattleNetTemplates.fdf",
+
+Frame "TEXTAREA" "FrameBaseTextArea" {
+    Width 0.01,
+    Height 0.01,
+}
+Frame "TEXT" "FrameBaseText" {
+    FrameFont "war3mapImported\fonts-consolas.ttf", 0.00866, "",
+    FontJustificationH JUSTIFYLEFT,
+    FontJustificationV JUSTIFYTOP,
+    FontColor 1.0 1.0 1.0 1.0,
+    FontShadowColor 0.0 0.0 0.0 0.9,
+    FontShadowOffset 0.001 -0.001,
+}
+Frame "TEXT" "FrameTooltipText" INHERITS "FrameBaseText" {
+    FontJustificationH JUSTIFYCENTER,
+    FontJustificationV JUSTIFYMIDDLE,
+}
+Frame "TEXT" "FrameHeaderText" {
+    FrameFont "war3mapImported\fonts-tarzan.ttf", 0.021, "",
+    FontJustificationH JUSTIFYCENTER,
+    FontJustificationV JUSTIFYMIDDLE,
+    FontColor 1.0 1.0 1.0 1.0,
+    FontShadowColor 0.0 0.0 0.0 0.9,
+    FontShadowOffset 0.001 -0.001,
+}
+Frame "TEXT" "FrameBtnText" INHERITS "FrameHeaderText" {
+    FrameFont "war3mapImported\fonts-tarzan.ttf", 0.01, "",
+}
+Frame "SIMPLEBUTTON" "SimpleButtonMenu" {
+    Width 0.09,
+    Height 0.04,
+    Texture "SimpleButtonMenuTexture" {
+    }
+}
+Frame "SIMPLEBUTTON" "SimpleButtonChatLog" {
+    Width 0.09,
+    Height 0.04,
+    Texture "SimpleButtonChatLogTexture" {
+    }
+}
+Frame "SIMPLEFRAME" "SimpleFrameSplash" {
+    Width 1.0,
+    Height 1.0,
+    Texture "SimpleFrameSplashTexture" {
+        File "war3mapImported\menu-intro_splash.blp",
+    }
+}
+Frame "SIMPLEFRAME" "SimpleLoadingSplash" {
+    Width 1.0,
+    Height 1.0,
+    Texture "SimpleLoadingSplashTexture" {
+        File "war3mapImported\dig_site-loading_screen.blp",
+    }
+}
+Frame "SIMPLEFRAME" "SimpleFrameBlackFill" {
+    Width 1.0,
+    Height 1.0,
+    Texture "SimpleFrameBlackFillTexture" {
+    }
+}
+Frame "BUTTON" "FrameCloseBtn" {
+    Width 0.0288,
+    Height 0.0266,
+    ControlBackdrop "FrameCloseBtnBackdrop",
+        Frame "BACKDROP" "FrameCloseBtnBackdrop" {
+        SetAllPoints,
+        BackdropTileBackground,
+        BackdropBackground  "war3mapImported\btn-close_x.blp",
+        BackdropBackgroundSize  0.0288,
+        BackdropBlendAll,
+    }
+}
+Frame "BUTTON" "FrameInventorySlotBtn" {
+    Width 0.038,
+    Height 0.038,
+    ControlBackdrop "FrameInventorySlotBackdrop",
+    Frame "BACKDROP" "FrameInventorySlotBackdrop" INHERITS "BattleNetControlBackdropTemplate" {
+        SetAllPoints,
+        BackdropCornerSize  0.014,
+        BackdropBackgroundInsets 0.003 0.003 0.003 0.003,
+    }
+}
+Frame "FRAME" "FrameBasicTooltip" {
+    Width 0.100,
+    Height 0.016,
+    Frame "BACKDROP" "FrameBasicTooltipBackdrop" {
+        SetAllPoints,
+        BackdropTileBackground,
+        BackdropBackground  "war3mapImported\colors_bgbrown.blp",
+        BackdropBackgroundSize  0.100,
+        BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+        BackdropCornerSize  0.0015,
+        BackdropBackgroundInsets 0.0015 0.0015 0.0015 0.0015,
+        BackdropEdgeFile  "war3mapImported\colors_accentgrey.blp",
+        BackdropBlendAll,
+    }
+}
+Frame "FRAME" "FrameLongformTooltip" {
+    Width 0.18,
+    Height 0.20,
+    Frame "BACKDROP" "FrameLongformTooltipBackdrop" {
+        SetAllPoints,
+        BackdropBackground  "war3mapImported\tooltip-bg_scroll.blp",
+        BackdropBackgroundSize  0.18,
+        BackdropBlendAll,
+    }
+    Frame "BACKDROP" "FrameLongformTooltipItemIcon" {
+        Width 0.0356,
+        Height 0.0356,
+        SetPoint TOPLEFT, "FrameLongformTooltipBackdrop", TOPLEFT, 0.0113, -0.0113,
+        BackdropBackground  "war3mapImported\colors_bgtan.blp",
+        BackdropBlendAll,
+    }
+    Frame "TEXT" "FrameLongformTooltipName" INHERITS "FrameBaseText" {
+        Width 0.116,
+        SetPoint TOPLEFT, "FrameLongformTooltipItemIcon", TOPRIGHT, 0.007, 0.0,
+        Text "",
+    }
+    Frame "TEXT" "FrameLongformTooltipDescription" INHERITS "FrameBaseText" {
+        Width 0.15,
+        SetPoint TOPLEFT, "FrameLongformTooltipItemIcon", BOTTOMLEFT, 0.0, -0.012,
+        Text "",
+    }
+}
+Frame "FRAME" "FrameItemTooltip" {
+    Width 0.18,
+    Height 0.20,
+    Frame "BACKDROP" "FrameItemTooltipBackdrop" {
+        SetAllPoints,
+        BackdropBackground  "war3mapImported\tooltip-bg_scroll.blp",
+        BackdropBackgroundSize  0.18,
+        BackdropBlendAll,
+    }
+    Frame "BACKDROP" "FrameItemTooltipItemIcon" {
+        Width 0.03555,
+        Height 0.03555,
+        SetPoint TOPLEFT, "FrameItemTooltipBackdrop", TOPLEFT, 0.0113, -0.0113,
+        BackdropBackground  "war3mapImported\colors_bgtan.blp",
+        BackdropBlendAll,
+    }
+    Frame "BACKDROP" "FrameItemTooltipItemRarityIcon" {
+        Width 0.0125,
+        Height 0.0125,
+        SetPoint CENTER, "FrameItemTooltipBackdrop", BOTTOM, 0.0, 0.0011,
+        BackdropBackground  "war3mapImported\colors_accentgrey.blp",
+        BackdropBlendAll,
+    }
+    Frame "TEXT" "FrameItemTooltipName" INHERITS "FrameBaseText" {
+        Width 0.116,
+        SetPoint TOPLEFT, "FrameItemTooltipItemIcon", TOPRIGHT, 0.007, 0.0,
+        Text "This is the item name and it wraps at least once|nSlot|nRarity",
+    }
+    Frame "TEXT" "FrameItemTooltipDescription" INHERITS "FrameBaseText" {
+        Width 0.15,
+        SetPoint TOPLEFT, "FrameItemTooltipItemIcon", BOTTOMLEFT, 0.0, -0.009,
+        Text "",
+    }
+    Frame "TEXT" "FrameItemTooltipLevel" INHERITS "FrameBaseText" {
+        Height 0.012,
+        SetPoint BOTTOMLEFT, "FrameItemTooltipBackdrop", BOTTOMLEFT, 0.0113, 0.0113,
+        FontJustificationV JUSTIFYMIDDLE,
+        FontColor 0.46 0.46 0.46 1.0,
+        Text "Level 1",
+    }
+    Frame "TEXT" "FrameItemTooltipGoldValue" INHERITS "FrameBaseText" {
+        Height 0.012,
+        SetPoint BOTTOMRIGHT, "FrameItemTooltipBackdrop", BOTTOMRIGHT, -0.0113, 0.0113,
+        FontJustificationV JUSTIFYMIDDLE,
+        FontColor 1.0 0.8 0.05 1.0,
+        Text "100",
+    }
+    Frame "BACKDROP" "FrameItemTooltipGoldIcon" {
+        Width 0.00888,
+        Height 0.00888,
+        SetPoint RIGHT, "FrameItemTooltipGoldValue", LEFT, -0.004, 0.001,
+        BackdropBackground  "war3mapImported\tooltip-gold_icon.blp",
+        BackdropBlendAll,
+    }
+}
+Frame "FRAME" "FrameItemCompTooltip" {
+    Width 0.18,
+    Height 0.20,
+    Frame "BACKDROP" "FrameItemCompTooltipBackdrop" {
+        SetAllPoints,
+        BackdropBackground  "war3mapImported\tooltip-bg_scroll.blp",
+        BackdropBackgroundSize  0.18,
+        BackdropBlendAll,
+    }
+    Frame "BACKDROP" "FrameItemCompTooltipItemIcon" {
+        Width 0.03555,
+        Height 0.03555,
+        SetPoint TOPLEFT, "FrameItemCompTooltipBackdrop", TOPLEFT, 0.0113, -0.0113,
+        BackdropBackground  "war3mapImported\colors_bgtan.blp",
+        BackdropBlendAll,
+    }
+    Frame "BACKDROP" "FrameItemCompTooltipItemRarityIcon" {
+        Width 0.0125,
+        Height 0.0125,
+        SetPoint CENTER, "FrameItemCompTooltipBackdrop", BOTTOM, 0.0, 0.0011,
+        BackdropBackground  "war3mapImported\colors_accentgrey.blp",
+        BackdropBlendAll,
+    }
+    Frame "TEXT" "FrameItemCompTooltipName" INHERITS "FrameBaseText" {
+        Width 0.116,
+        SetPoint TOPLEFT, "FrameItemCompTooltipItemIcon", TOPRIGHT, 0.007, 0.0,
+        Text "This is the item name and it wraps at least once|nSlot|nRarity",
+    }
+    Frame "TEXT" "FrameItemCompTooltipDescription" INHERITS "FrameBaseText" {
+        Width 0.15,
+        SetPoint TOPLEFT, "FrameItemCompTooltipItemIcon", BOTTOMLEFT, 0.0, -0.009,
+        Text "",
+    }
+    Frame "TEXT" "FrameItemCompTooltipLevel" INHERITS "FrameBaseText" {
+        Height 0.012,
+        SetPoint BOTTOMLEFT, "FrameItemCompTooltipBackdrop", BOTTOMLEFT, 0.0113, 0.0113,
+        FontJustificationV JUSTIFYMIDDLE,
+        FontColor 0.46 0.46 0.46 1.0,
+        Text "Level 1",
+    }
+    Frame "TEXT" "FrameItemCompTooltipGoldValue" INHERITS "FrameBaseText" {
+        Height 0.012,
+        SetPoint BOTTOMRIGHT, "FrameItemCompTooltipBackdrop", BOTTOMRIGHT, -0.0113, 0.0113,
+        FontJustificationV JUSTIFYMIDDLE,
+        FontColor 1.0 0.8 0.05 1.0,
+        Text "100",
+    }
+    Frame "BACKDROP" "FrameItemCompTooltipGoldIcon" {
+        Width 0.00888,
+        Height 0.00888,
+        SetPoint RIGHT, "FrameItemCompTooltipGoldValue", LEFT, -0.004, 0.001,
+        BackdropBackground  "war3mapImported\tooltip-gold_icon.blp",
+        BackdropBlendAll,
+    }
+    Frame "BACKDROP" "FrameItemCompTooltipTitleBackdrop" {
+        Width 0.111,
+        Height 0.0166,
+        SetPoint TOP, "FrameItemCompTooltipBackdrop", TOP, 0.0, 0.01288,
+        BackdropBackground  "war3mapImported\tooltip-comparison_title_shadow.blp",
+        BackdropBlendAll,
+    }
+    Frame "TEXT" "FrameItemCompTooltipTitle" INHERITS "FrameBtnText" {
+        Width 0.116,
+        SetPoint TOP, "FrameItemCompTooltipBackdrop", TOP, 0.0, 0.009,
+        Text "Currently Equipped",
+    }
+}
+Texture "FrameCharPanelAddAttrTexture" {
+    File "war3mapImported\btn-add_attr.blp",
+}
+Texture "FrameCharPanelAddAttrPushedTexture" {
+    File "war3mapImported\btn-add_attr-dis.blp",
+    AlphaMode "ADD",
+}
+Texture "FrameCharPanelAddAttrDisabledTexture" {
+    File "war3mapImported\btn-add_attr-dis.blp",
+}
+Frame "SIMPLEBUTTON" "FrameCharPanelAttrAdd" {
+    Width 0.023,
+    Height 0.014,
+    NormalTexture "FrameCharPanelAddAttrTexture",
+    PushedTexture "FrameCharPanelAddAttrPushedTexture",
+    DisabledTexture "FrameCharPanelAddAttrDisabledTexture",
+    UseHighlight "FrameCharPanelAddAttrTexture",
+}
+Texture "FrameSkillBarInvBtnTexture" {
+    File "war3mapImported\skillbar-inventory-btn.blp",
+    TexCoord 0, 1, 0, 1,
+}
+Texture "FrameSkillBarInvBtnPushedTexture" {
+    File "war3mapImported\skillbar-inventory-btn.blp",
+    AlphaMode "ADD",
+    TexCoord 0, 1, 0, 1,
+}
+Texture "FrameSkillBarInvBtnHighlightTexture" {
+    File "war3mapImported\skillbar-inventory-btn-hover.blp",
+    TexCoord 0, 1, 0, 1,
+}
+Frame "SIMPLEBUTTON" "FrameSkillBarInvBtn" {
+    Width 0.033,
+    Height 0.033,
+    NormalTexture "FrameSkillBarInvBtnTexture",
+    PushedTexture "FrameSkillBarInvBtnPushedTexture",
+    DisabledTexture "FrameSkillBarInvBtnTexture",
+    UseHighlight "FrameSkillBarInvBtnHighlightTexture",
+}
+Texture "FrameSkillBarCharBtnTexture" {
+    File "war3mapImported\skillbar-character-btn.blp",
+}
+Texture "FrameSkillBarCharBtnPushedTexture" {
+    File "war3mapImported\skillbar-character-btn.blp",
+    AlphaMode "ADD",
+}
+Texture "FrameSkillBarCharBtnHighlightTexture" {
+    File "war3mapImported\skillbar-character-btn-hover.blp",
+}
+Frame "SIMPLEBUTTON" "FrameSkillBarCharBtn" {
+    Width 0.033,
+    Height 0.033,
+    NormalTexture "FrameSkillBarCharBtnTexture",
+    PushedTexture "FrameSkillBarCharBtnPushedTexture",
+    DisabledTexture "FrameSkillBarCharBtnTexture",
+    UseHighlight "FrameSkillBarCharBtnHighlightTexture",
+}
+Frame "SIMPLESTATUSBAR" "SkillBarHealth" {
+    Width 0.196,
+    Height 0.018,
+    BarTexture "war3mapImported\skillbar-statebar_empty.blp",
+    Layer "BACKGROUND" {
+        Texture "SkillBarHealthBackground"{
+            File "war3mapImported\skillbar-statebar_hp.blp",
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "SkillBarMana" {
+    Width 0.196,
+    Height 0.018,
+    BarTexture "war3mapImported\skillbar-statebar_mana.blp",
+    Layer "BACKGROUND" {
+        Texture "SkillBarManaBackground"{
+            File "war3mapImported\skillbar-statebar_empty.blp",
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "DigSiteLoadBar" {
+    Width 0.133,
+    Height 0.0356,
+    BarTexture "war3mapImported\digsite-load_bar_fill.blp",
+    Layer "BACKGROUND" {
+        Texture "DigSiteLoadBarBackground" {
+            File "war3mapImported\digsite-load_bar_top.blp",
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "CandleLightBar" {
+    Width 0.1889,
+    Height 0.035, 
+    BarTexture "war3mapImported\bar-candle_light_fill.blp",
+    Layer "BACKGROUND" {
+        Texture "CandleLightBarBackground" {
+            File "war3mapImported\bar-candle_light_bg.blp",
+        }
+    }
+    Frame "TEXT" "CandleLightBarText" INHERITS "FrameBaseText" {
+        Height 0.012,
+        SetPoint CENTER, "CandleLightBarBackground", CENTER, 0.0, -0.0075,
+        FontJustificationV JUSTIFYMIDDLE,
+        FontJustificationH JUSTIFYCENTER,
+        Text "180/180",
+    }
+    Layer "ARTWORK" {
+        Texture "CandleLightBarWave1" {
+            Width 0.01055,
+            Height 0.01333,
+            File "war3mapImported\bar-candle_light_wave_marker.blp",
+            Anchor TOPLEFT, 0.10833, -0.02944,
+        }
+        Texture "CandleLightBarWave2" {
+            Width 0.01055,
+            Height 0.01333,
+            File "war3mapImported\bar-candle_light_wave_marker.blp",
+            Anchor TOPLEFT, 0.05088, -0.02944,
+        }
+        Texture "CandleLightBarWave3" {
+            Width 0.01055,
+            Height 0.01333,
+            File "war3mapImported\bar-candle_light_wave_marker.blp",
+            Anchor TOPLEFT, 0.00622, -0.02944,
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "KoboldExperienceBar" {
+    Width 0.3861,
+    Height 0.01722,
+    Layer "BACKGROUND" {
+        Texture "KoboldExperienceBarBackground" {
+            File "war3mapImported\bar-xp_bg.blp",
+        }
+    }
+    BarTexture "war3mapImported\bar-xp_fill.blp",
+}
+Frame "SIMPLEFRAME" "KoboldSkillBarBackdrop" {
+    Width 0.61889,
+    Height 0.10778,
+    Texture "KoboldSkillBarBackdropTexture" {
+        File "war3mapImported\panel-skillbar-backdrop-interface.blp",
+    }
+}
+Frame "SCROLLBAR" "CharacterStatsScrollBar" {
+    Height 0.1472,
+    Width 0.0165,
+    SliderLayoutVertical,
+
+    ControlBackdrop "StandardScrollBarBackdrop",
+    Frame "BACKDROP" "StandardScrollBarBackdrop" {
+        BackdropTileBackground,
+        BackdropBackground  "UI\Widgets\Glues\GlueScreen-Scrollbar-BackdropBackground.blp",
+        BackdropCornerFlags "UL|UR|BL|BR|T|L|B|R",
+        BackdropCornerSize  0.008,
+        BackdropBackgroundInsets 0.004 0.004 0.004 0.004,
+        BackdropEdgeFile  "UI\Widgets\Glues\GlueScreen-Scrollbar-BackdropBorder.blp",
+        BackdropBlendAll,
+    }
+
+    ScrollBarIncButtonFrame "BattleNetScrollBarIncButton",
+    Frame "BUTTON" "BattleNetScrollBarIncButton" {
+        Width 0.015,
+        Height 0.015,
+        ControlBackdrop "BattleNetScrollBarIncButtonBackdrop",
+        Frame "BACKDROP" "BattleNetScrollBarIncButtonBackdrop" {                    
+            BackdropBackground  "UI\Widgets\Glues\GlueScreen-Scrollbar-UpArrow.blp",
+            BackdropBlendAll,
+        }
+    }
+
+    ScrollBarDecButtonFrame "BattleNetScrollBarDecButton",
+    Frame "BUTTON" "BattleNetScrollBarDecButton" {
+        Width 0.015,
+        Height 0.015,
+        ControlBackdrop "BattleNetScrollBarDecButtonBackdrop",
+        Frame "BACKDROP" "BattleNetScrollBarDecButtonBackdrop" {
+            BackdropBackground  "UI\Widgets\Glues\GlueScreen-Scrollbar-DownArrow.blp",
+            BackdropBlendAll,
+        }
+    }
+
+    SliderThumbButtonFrame "BattleNetThumbButton",
+    Frame "BUTTON" "BattleNetThumbButton" {
+        Width 0.01,
+        Height 0.01,
+        ControlBackdrop "BattleNetThumbButtonBackdrop",
+        Frame "BACKDROP" "BattleNetThumbButtonBackdrop" {
+            BackdropBackground  "UI\Widgets\Glues\SinglePlayerSkirmish-ScrollBarKnob.blp",
+            BackdropBlendAll,
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "KoboldPartyPillHealthBar" {
+    Width 0.05,
+    Height 0.0116,
+    BarTexture "war3mapImported\party_pane-hp_fill.blp",
+    Layer "BACKGROUND" {
+        Texture "KoboldPartyPillHealthBarBackground" {
+            File "war3mapImported\party_pane-hp_frame.blp",
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "KoboldPartyPillManaBar" {
+    Width 0.05,
+    Height 0.0116,
+    BarTexture "war3mapImported\party_pane-mana_fill.blp",
+    Layer "BACKGROUND" {
+        Texture "KoboldPartyPillManaBarBackground" {
+            File "war3mapImported\party_pane-mana_frame.blp",
+        }
+    }
+}
+Frame "SIMPLESTATUSBAR" "BossHealthBar" {
+    Width 0.3778,
+    Height 0.01889,
+    BarTexture "war3mapImported\boss-bar-hp-enabled.blp",
+    Layer "BACKGROUND" {
+        Texture "SkillBarHealthBackground"{
+            File "war3mapImported\boss-bar-hp-disabled.blp",
+        }
+    }
+}

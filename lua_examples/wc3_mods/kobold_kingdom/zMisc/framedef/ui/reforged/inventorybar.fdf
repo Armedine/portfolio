@@ -1,0 +1,62 @@
+Frame "SIMPLEBUTTON" "InventoryButtonTemplate" {
+	DecorateFileNames,
+	Width 0.023,
+	Height 0.023,	
+}
+
+Frame "SIMPLEFRAME" "SimpleInventoryBar" {
+    UseActiveContext,
+    SetAllPoints,
+		
+	Frame "SIMPLEBUTTON" "InventoryButton_0" INHERITS "InventoryButtonTemplate" {
+		SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.115, -0.0509,
+	}
+	
+	Frame "SIMPLEBUTTON" "InventoryButton_1" INHERITS "InventoryButtonTemplate" {
+		SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.1400, -0.0509,
+	}
+	
+	Frame "SIMPLEBUTTON" "InventoryButton_2" INHERITS "InventoryButtonTemplate" {
+		SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.1650, -0.0509,
+	}
+	
+	Frame "SIMPLEBUTTON" "InventoryButton_3" INHERITS "InventoryButtonTemplate" {
+		SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.115, -0.0759,
+	}
+	
+	Frame "SIMPLEBUTTON" "InventoryButton_4" INHERITS "InventoryButtonTemplate" {
+		SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.1400, -0.0759,
+	}
+	
+	Frame "SIMPLEBUTTON" "InventoryButton_5" INHERITS "InventoryButtonTemplate" {
+		SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.1650, -0.0759,
+	}
+	
+	Frame "TEXT" "InventoryText"{
+        Width 0.076875,
+		Height 0.01125,    
+        DecorateFileNames,
+        SetPoint TOPLEFT, "SimpleInventoryBar", TOPRIGHT, 0.134, -0.041,
+        Text "INVENTORY",		
+		FrameFont "MasterFont", 0.007, "",  
+		FontFlags "FIXEDSIZE",
+		FontColor 0.99 0.827 0.070 1.0,
+		FontShadowColor 0.0 0.0 0.0 0.9,	
+		FontShadowOffset 0.001 -0.001,	
+	}
+}
+
+Frame "SIMPLEFRAME" "SimpleInventoryCover" {	
+    UseActiveContext,
+    DecorateFileNames,
+    Width 0.1063,
+    Height 0.146,        
+	SetPoint BOTTOMRIGHT, "ConsoleUI", BOTTOMLEFT, 0.7046, 0.0,
+	
+	Texture "InventoryCoverTexture" {       
+		Width 0.1067,
+		Height 0.2136, 
+		SetPoint BOTTOMRIGHT, "SimpleInventoryCover", BOTTOMRIGHT, 0.0, 0.0,
+		File "MinHudConsoleInventoryCoverTexture",
+	}
+}

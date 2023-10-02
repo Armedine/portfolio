@@ -1,0 +1,71 @@
+Frame "TEXT" "FrameBaseText" {
+    FrameFont "fonts\aAbsoluteEmpire.ttf", 0.008, "",
+    FontJustificationH JUSTIFYLEFT,
+    FontJustificationV JUSTIFYTOP,
+    FontColor 1.0 1.0 1.0 1.0,
+    FontShadowColor 0.0 0.0 0.0 0.9,
+    FontShadowOffset 0.001 -0.001,
+}
+
+Frame "TEXT" "FrameBaseTextCentered" {
+    FrameFont "fonts\aAbsoluteEmpire.ttf", 0.008, "",
+    FontJustificationH JUSTIFYCENTER,
+    FontJustificationV JUSTIFYMIDDLE,
+    FontColor 1.0 1.0 1.0 1.0,
+    FontShadowColor 0.0 0.0 0.0 0.9,
+    FontShadowOffset 0.001 -0.001,
+}
+
+Frame "SIMPLESTATUSBAR" "SimpleBarInvasionProgress" {
+    Width 0.2,
+    Height 0.2,
+    BarTexture "war3mapImported\bar_gate_invasion_progress_bar.blp",
+    Frame "TEXT" "SimpleBarInvasionProgressText" INHERITS "FrameBaseTextCentered" {
+        FrameFont "fonts\aAbsoluteEmpire.ttf", 0.007, "",
+        SetPoint CENTER, "SimpleBarInvasionProgress", CENTER, 0.0, 0.0,
+        Text "DEMONS",
+    }
+    Layer "BACKGROUND" {
+        Texture "SimpleBarInvasionProgressBackground" {
+            File "war3mapImported\bar_progress_frame.blp",
+        }
+    }
+}
+
+Frame "SIMPLESTATUSBAR" "SimpleBarLivesProgress" {
+    Width 0.2,
+    Height 0.2,
+    BarTexture "war3mapImported\bar_round_progress_bar.blp",
+    Frame "TEXT" "SimpleBarLivesProgressText" INHERITS "FrameBaseTextCentered" {
+        FrameFont "fonts\aAbsoluteEmpire.ttf", 0.007, "",
+        SetPoint CENTER, "SimpleBarLivesProgress", CENTER, 0.0, 0.0,
+        Text "LIVES",
+    }
+    Layer "BACKGROUND" {
+        Texture "SimpleBarLivesProgressBackground"{
+            File "war3mapImported\bar_progress_frame.blp",
+        }
+    }
+}
+
+Frame "SIMPLESTATUSBAR" "SimpleBarUnitHealth" {
+    Width 0.2,
+    Height 0.2,
+    BarTexture "war3mapImported\bar_simple_hp_bar.blp",
+    Layer "BACKGROUND" {
+        Texture "SimpleBarUnitHealthBackground"{
+            File "war3mapImported\bar_simple_frame.blp",
+        }
+    }
+}
+
+Frame "SIMPLESTATUSBAR" "SimpleBarUnitMana" {
+    Width 0.2,
+    Height 0.2,
+    BarTexture "war3mapImported\bar_simple_mana_bar.blp",
+    Layer "BACKGROUND" {
+        Texture "SimpleBarUnitManaBackground"{
+            File "war3mapImported\bar_simple_frame.blp",
+        }
+    }
+}

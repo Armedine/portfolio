@@ -1,0 +1,29 @@
+wow models list to look at exporting:
+
+world/generic/human/passive doodads/minemachine/cavekoboldminemachine.m2
+world/expansion06/doodads/kobold/7ko_kobold_waxblock.m2
+world/expansion06/doodads/kobold/7ko_kobold_waxball.m2
+world/dungeon/goldmine/passivedoodads/caveminekobolds/caveminekobold01.m2
+world/dungeon/goldmine/passivedoodads/caveminekobolds/caveminekobold02.m2
+world/dungeon/goldmine/passivedoodads/caveminekobolds/caveminekobold03.m2
+world/dungeon/goldmine/passivedoodads/caveminekobolds/caveminekobold04.m2
+world/dungeon/goldmine/passivedoodads/caveminekobolds/caveminekobold05.m2
+world/dungeon/goldmine/passivedoodads/caveminekobolds/caveminekobold06.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlelarge01.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlelarge02.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlelarge03.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlelarge04.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlemedium01.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlemedium02.m2
+world/expansion06/doodads/kobold/7ko_kobold_candlemedium03.m2
+world/expansion06/doodads/highmountain/7hm_caverock_b01.m2
+world/expansion06/doodads/highmountain/7hm_darkrock_c01.m2
+world/expansion06/doodads/highmountain/7hm_darkrock_b01.m2
+world/expansion06/doodads/highmountain/7hm_darkrock_a04.m2
+world/expansion06/doodads/highmountain/7hm_darkrock_a02.m2
+world/expansion06/doodads/highmountain/7hm_darkrock_a03.m2
+world/expansion06/doodads/highmountain/7hm_darkrock_a01.m2
+
+-- top to bottom cave platforms we can randomly place in the level?
+world/expansion06/doodads/highmountain/7hm_caveplatform_b01.m2
+world/expansion06/doodads/highmountain/7hm_caveplatform_b02.m2

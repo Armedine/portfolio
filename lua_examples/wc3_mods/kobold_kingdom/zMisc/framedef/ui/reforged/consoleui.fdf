@@ -1,0 +1,27 @@
+
+// The minimal hud console
+Frame "SIMPLEFRAME" "ConsoleUI" {
+
+	// Top
+	Texture {
+        File "UI/Console/Reforged/MinHudConsole.blp",
+        //Width 1.299999,
+        //Width 1.277,
+        Width 1.07,
+        Height 0.055,
+        TexCoord 0, 1, 0, 0.25,
+        AlphaMode "ALPHAKEY",
+        Anchor TOP, 0.0, 0.0,
+    }
+
+    // Bottom
+    Texture {
+        File "UI/Console/Reforged/MinHudConsole.blp",
+        Width 1.07,
+        Height 0.1605,
+        AlphaMode "ALPHAKEY",
+        TexCoord 0, 1, 0.25, 1,
+        Anchor BOTTOMLEFT, -0.134,0,
+    }
+
+}

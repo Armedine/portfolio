@@ -1,0 +1,86 @@
+[b]Kobold Kingdom[/b] is a solo dungeon-crawler and boss-romp with RPG elements.
+
+
+
+
+Some key features are:
+New user interface
+Randomized, affix-based loot drops
+6 different damage types
+A slew of custom abilities for each class (over 60!)
+Over 40 player stat modifiers
+Procedurally generated levels
+Intense boss battles featuring missile mayhem
+... and more!
+
+Choose one of four thematic classes (each built from the ground up with custom abilities) and embark on adventures through perilous, randomized maps as you scour for rare resources while fueling your precious candle to ward off the encroaching Darkness. As you level up, assign attribute points for bonus stats, traverse an omni-directional talent tree, and earn troves of items which feature a variety of modifiers, allowing you to mix and match for your chosen strategy.
+
+
+[b]Choose from two modes:[/b]
+"Story" - (Recommended for first-time users) Start from level 1 and go through a short, linear narrative as you help rebuild the rundown kingdom of the Tunnel Rat Clan.
+"Free Play" - Skip the story and jump right in, starting from level 15 with an assortment of items and resources.
+
+[spoiler="FAQ"]
+[b]What game versions are supported?[/b]
+This map was designed for 1.32 and up.
+
+[b]Is the map protected?[/b]
+Nope.
+
+[b]Does this map support Reforged?[/b]
+This map was designed for SD. HD may or may not completely break things.
+
+[b]Is there multiplayer?[/b]
+No. This was originally an abandoned project, and the task to fix every desync has proven too much for what it's worth after the disaster that was Reforged.
+
+[b]Can I save my character?[/b]
+No. This map should be treated more like a short story or boss battle map, rather than a save/load RPG.
+
+[b]Can I use the default WC3 save feature?[/b]
+Unfortunately, no. This is a known bug with using custom frames, and this particular map has so many spaghetti framehandle sources that the load event fix has proven difficult to nail down.
+
+[b]What's the goal?[/b]
+The game loop is quite simple. Whether in Story or Free Play mode, open your Dig Site Map with 'Tab' to enter randomly generated dungeons.
+Complete dig site objectives to level up and acquire sweet loot. You can craft specific items using the ore collected on digs. Each biome features specific ore types.
+If you are in Story Mode, follow the map markers to acquire quests and engage in dialogue sequences by speaking to characters (hotkey 'D').
+
+[b]What's the meter at the top?[/b]
+That's your Candle Light bar. As it depletes, minions of The Darkness will spawn near you and attack. If it fully depletes, The Darkness itself will come for you. (Don't let it get near you!)
+
+[b]What do I do in Free Play mode?[/b]
+Free Play skips the story component and gets right to the gameplay. The town hub is rendered mostly moot by this mode, so you don't need to spend too much time wandering around the tunnel for goodies other than for sighteeing or testing spells at Ymmud (the target dummy). This mode is essentially for the curious browser, whether it's a one-and-done trial of the map or if you want to experience each class without having to start from level 1. Since you have each of the dig keys in this mode, it's ideal for jumping directly into the bosses (and trying them on harder difficulties, if so desired).
+
+[b]How many Mythic special effects did you use?[/b]
+Yes.
+[/spoiler]
+
+[spoiler="Credits"]
+"Hearthstone Interface Assets" = "©2014 Blizzard Entertainment, Inc. All rights reserved. Heroes of Warcraft is a trademark, and Hearthstone is a registered trademark of Blizzard Entertainment, Inc. in the U.S. and/or other countries."
+"World of Warcraft Interface Assets" = "©2004 Blizzard Entertainment, Inc. All rights reserved. World of Warcraft, Warcraft and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the U.S. and/or other countries."
+"Open Source RPG Icons" = "Ravenmore @ https://opengameart.org/"
+"Hero Glow" = "assasin_lord"
+"Gold Ore, Silver Ore, Iron Ore" = "Ergius"
+"Pixel to DPI" = "Quilnez/Kazeon"
+"Devilsaur Pack, Genesaur" = "Explobomb"
+"Magnaron" = "Maldiran"
+"Confirmation" = "Epsilon"
+"Ground Explosion, Explosion Big, Sparks Explosion, Dirt Explosion" = "WILL THE ALMIGHTY"
+"Generic Canister, Orb Elements" = "General Frank"
+"Lightning Strike, Blue/Green Fungus, Ratorg Rider" = "Callahan"
+"Orcish Runes" = "frostwhisper"
+"Purified Maw Giant" = "Draconian"
+"Naga Lord Pack" = "Tier10Trash"
+"Naga Brute Pack" = "BardBord"
+"Running Flame Aura" = "sPy"
+"Magic Shield" = "JesusHipster"
+"Simple White Bag" = "Captain Bacon, ILH"
+"Cannon Turret" = "arnelbigstonepd33r"
+"Troll Den, Gold Pile" = "HerrDave"
+"Global Init, Timer Utils" = "Bribe"
+"Arcing Text Tag" = "Maker"
+"Sleet Storm" = "Hate"
+"Kobold Slavemaster, Kobold Basher" = "-Grendel"
+"HQ Gold Chest" = "HammerFist132"
+"Kobold Stalker" = "levigeorge1617"
+"Void Missiles, Void Rifts, Void Teleport, Fire Missiles, Conflagrate, Missile I, Missile II, Shot I, Shot II, Malevolence Aura, Pillar of Flame, Rain of Fire II, Judgement, Ember, Storm Bolt, Soul Beam, Soul Armor, Runic Rocket, Singularity I, Singularity II, Righteous Guard, Uber Shield, Climax, Winder Blast, Blink I, Blizzard II, Bondage, Flamestrike, Eldritch Scroll, Chain Grenade, Carrion Bats, Burning Rage, Athelas, Armor Pen/Stimulus, Firebrand Shots, Frostcraft Crystal, Psionic Shot, Heaven's Gate Heal, Ice Shard, Sacred Storm, Shining Flare, Soul Armor, Soul Beam, Soul Discharge, Stormfall, Valiant Charge, Shock Blast, Windwalk, Reaper Claws" = "Mythic"
+[/spoiler]

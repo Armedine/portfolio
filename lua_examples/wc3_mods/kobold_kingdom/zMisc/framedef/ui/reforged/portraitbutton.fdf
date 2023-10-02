@@ -1,0 +1,19 @@
+Texture "BannerTemplate" {
+	Width 0.1,
+	Height 0.2,
+	TexCoord 0, 1, 0, 1,
+	AlphaMode "ALPHAKEY",
+	Anchor BOTTOMLEFT, -0.1, 0.0,
+}
+
+Frame "SIMPLEFRAME" "SimplePortraitBanner" {
+	
+	//Human flag
+    Texture "HumanBanner" INHERITS "BannerTemplate"{
+        File "UI/Console/Human/HumanUITile-Flag.blp",
+    }
+	
+    Texture "UndeadBanner" INHERITS "BannerTemplate"{
+        File "UI/Console/Undead/UndeadUITile-Flag.blp",
+    }
+}
