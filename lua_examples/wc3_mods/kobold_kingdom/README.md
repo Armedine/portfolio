@@ -1,5 +1,7 @@
 # Kobold Kingdom v1.5
 
+![Kobold Kingdom](https://www.hiveworkshop.com/data/ratory-images/197/197489-04246ab8df07fb4c99cae0c7b4594e6a.png)
+
 https://www.hiveworkshop.com/threads/kobold-kingdom-v1-5.334614/
 
 Kobold Kingdom is a total-conversion action RPG for Warcraft 3: Reforged.
