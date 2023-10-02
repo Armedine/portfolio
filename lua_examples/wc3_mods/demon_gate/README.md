@@ -6,4 +6,4 @@ This project is on pause, but was set to be a wave-based survival rogue-lite-typ
 
 Players would roll randomized units as they complete unique waves of combatants and bosses, "building" their army to take advantage of specific traits or strategies.
 
-Atomspherically, the map used a custom model for every unit, courtesy of https://hiveworkshop.com/, to match a Warhammer Fantasy vibe.
+Atmospherically, the map used a custom model for every unit, courtesy of https://hiveworkshop.com/, to match a Warhammer Fantasy vibe.
