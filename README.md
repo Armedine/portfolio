@@ -1,4 +1,4 @@
-# portfolio
+# Stephen R. Baker - Public Portfolio
 A collection of work examples in various areas pertaining to code and hobbies.
 
 ---
