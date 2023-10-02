@@ -1,0 +1,6 @@
+onTriggerInit(function()
+    utils.debugfunc(function()
+    g:init()
+    combat:init()
+    end, "init")
+end)

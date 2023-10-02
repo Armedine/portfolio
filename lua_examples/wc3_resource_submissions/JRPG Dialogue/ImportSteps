@@ -1,0 +1,22 @@
+Installation instructions:
+
+    1)  Copy the "import" folder and paste it into your map.
+
+    2)  Export the .fdf and .toc file from the Asset Manager (F12). Their file path names need to remain the same or you
+        will need to edit the BlzLoadTOCFile call under the 'speak init' script.
+
+        If you desire the included custom text, also export the 'consolas.ttf' file.
+
+        If you DO NOT want the included custom text, open the .toc file in a text editor and remove/uncomment lines as instructed
+        in the file.
+
+    3)  If you desire the demo graphics for testing purposes, export the character portraits from the Asset Manager (F12).
+    
+        note: for steps 2 and 3, an "export all" option exists by right clicking a file or by going to File -> Export All Files
+        note: reminder that changed file strings for 2) and 3) will break things; make sure they match the demo's path naming.
+
+    4)  Copy the scene camera from the Camera Palette (sceneCam) OR create your own camera in your map and replace the variable
+        'self.scenecam' with your new camera object under 'speak:init()', which can be found under the 'speak' script file.
+
+    5)  Reference the function documentation and examples, then start building your scenes. Let me know if you encounter any
+        bugs or have any code or feature suggestions: Planetary @hiveworkshop.com

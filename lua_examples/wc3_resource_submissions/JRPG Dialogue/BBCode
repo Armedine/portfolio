@@ -1,0 +1,478 @@
+[COLOR=#ffffff]System Overview:[/COLOR]
+
+This was a resource request from a Hive member. It seemed useful to share with the community. In short, it emulates common JRPG dialogue systems with social interactions printed on screen over time while displaying actor emotions.
+
+Build out vertical screenplay objects and convert them to scenes, then run them with a command or two.
+
+The demo includes an example screenplay and portraits for actor emotions.
+
+This system is ideal for intermediate users who can combine a basic understanding of scripting while also allowing the use of GUI components to run cinematic sequences.
+
+[COLOR=#ffffff]API Overview:[/COLOR]
+[hidden][code=lua]-- "Speak" JRPG Dialogue System Overview:
+
+
+    speak:initscene()
+--[[
+        Run this command to initialize the scene camera and prepare the dialogue box.
+
+        In this function, you may want to add/remove map-wide settings as needed for your use case.
+
+        *Note: if you init scenes instead of playing them immediately, you might want to manually position the camera
+        using 'camtargetx' and 'camtargety' (see below).
+
+        Properties:
+            .scenecam    = the camera object settings to use (to change before scenes, use 'speak.scenecam = gg_cam_yourCustomCamera')
+            .camtargetx  = position the camera here (if unit pan is enabled, it will be automated while items play).
+            .camtargety  = ``
+--]]
+
+
+    speak:startscene(chain[, ...])
+--[[
+        @chain = the chain object containing the sequence of dialogue items, aka the scene, to run.
+        You can pass multiple chains as arguments and they will merge in their passed order (e.g. chain01, chain02, chain 03[, ...])
+
+        Run this command to begin the chain of dialogue items.
+
+        You can reference the cached chain with 'speak.currentchain', which is a temporary clone of @chain.
+
+        To retrieve the current position in the chain, one can use 'speak.currentindex'. This could be useful to check for scene progress
+        inside of other functions if needed (an idea that comes to mind is cleaning up eye-candy effects or units made in the area).
+--]]
+
+
+    speak:endscene()
+--[[
+        This command runs automatically when a scene's current chain object is exhausted (i.e. last item is played).
+
+        If desired, you could call this automatically under specified conditions or via hotkeys to cut scenes short.
+--]]
+
+
+    speak:pause()
+--[[
+        Pause a scene, hiding the dialogue box and preventing continue actions.
+
+        Useful if you want to hide the box, run a cinematic sequence, then resume social interactions.
+--]]
+
+
+    speak:resume()
+--[[
+        Resume a scene from the stored speech chain point, showing the dialogue box once more.
+--]]
+
+
+    speak.actor:new()
+--[[
+        @returns table.
+
+        Create a new actor object.
+
+            Properties:
+                .unit       = unit; actor's assigned unit (flash indicator and for referencing in functions).
+                .portrait   = table; the file paths for displaying character's reaction portrait.
+                .name       = string; defaults to assigned unit's name.
+--]]
+
+
+    speak.actor:assign(unit, portrait)
+--[[
+        @unit = the owner of the speech item.
+        @portrait = the portrait object for the actor.
+
+        This function fulfills the requirements of an actor, and will also accept anonymous tables as arguments for @portrait,
+        allowing you to quickly build new actors with terse code.
+
+        See the 'screenplay' demo script file for an explicit example.
+--]]
+
+
+    speak.item:new()
+--[[
+        @returns table.
+
+        Create a new speech item object.
+
+            Properties
+                .text       = string; the characters that render in the dialogue box when called.
+                .actor      = table; the actor object that owns the speech item.
+                .emotion    = string; the emotion string for looking up the actor's matching portrait.
+                .anim       = string; string animation to play when called.
+                .sound      = sound; the sound to play when called.
+                .func       = function; the function to play when called.
+
+        See the 'screenplay' demo script file for an explicit example.
+--]]
+
+
+    speak.chain:new()
+--[[
+        @returns table.
+
+        Create a new speech item chain object.
+
+        Chains are simple table classes and should be index-value paired, by which they are called in ascending index order when
+        injected into 'speak:startscene(chain)'. Chain objects have no config properties other than their indexed item content.
+--]]
+
+
+    speak.chain:add(item, index)
+--[[
+       @item = speech item object to add.
+       @index = [optional] the location to insert (pops into table, pushing other values up if present).
+
+        Add an item to a chain (provide no @index to insert at the top i.e. new index).
+
+        example: my_scene01:add(my_item)
+--]]
+
+
+    speak.chain:remove(item)
+--[[
+        @item = speech item to remove.
+
+        Remove an item from a chain.
+
+        example: my_scene01:remove(my_item)
+--]]
+
+
+    speak.chain:build(t)
+--[[
+        @t = a table used as a simple constructor for dialogue items, to allow for vertical reading like you would a real screenplay.
+        @returns table.
+
+        Example:
+        my_build_table = {
+            [1] = { "Some kind of dialogue.", actor1 , emotion1, anim1, sound1, func1 }
+            [2] = { "Some kind of dialogue.", actor2 , emotion2, anim2, sound2, func2 }
+            [3] = { "Some kind of dialogue.", actor3 , emotion3, anim3, sound3, func3 }
+        }
+        my_new_scene = speak.chain:build(my_build_table)
+
+        See the 'screenplay' demo script file for an explicit example.
+--]][/code][/hidden]
+[COLOR=#ffffff]Example Screenplay Construction:[/COLOR]
+[hidden][code=lua]function buildactors()
+    --[[
+        there are three methods to building a portrait object:
+            1)  simply declare a table and speak.actor:assign
+                will handle initializing the portrait object.
+            2)  if you want to be more formal, you can declare
+                the new object then assign emotions as needed.
+            3)  if you're a terse-junky, you can build a new
+                portrait object by passing in an anonymous table.
+    --]]
+
+    -- example 01) simple table - you just really like tables.
+    portrait_grunt = {
+        none        = 'war3mapImported\\portrait-orc.blp',
+        angry       = 'war3mapImported\\portrait-orc_anger.blp',
+        blush       = 'war3mapImported\\portrait-orc_blush.blp',
+        happy       = 'war3mapImported\\portrait-orc_happy.blp',
+    }
+    actor_grunt     = speak.actor:new()
+    actor_grunt:assign(udg_grunt, portrait_grunt)
+
+    -- example 02) formal - you may be wanting to modify portrait objects or change an actor's portrait kit.
+    portrait_footman = speak.portrait:new()
+    portrait_footman.none   = 'war3mapImported\\portrait-hu.blp'
+    portrait_footman.angry  = 'war3mapImported\\portrait-hu_anger.blp'
+    portrait_footman.blush  = 'war3mapImported\\portrait-hu_blush.blp'
+    portrait_footman.happy  = 'war3mapImported\\portrait-hu_happy.blp'
+    actor_footman   = speak.actor:new()
+    actor_footman:assign(udg_footman, portrait_footman)
+
+    -- example 03) terse-junky - keep the code really tight.
+    actor_peon      = speak.actor:new()
+    actor_peon:assign(
+        udg_peon,
+        { none  = 'war3mapImported\\portrait-orc_peon.blp', angry = 'war3mapImported\\portrait-orc_peon.blp',
+          blush = 'war3mapImported\\portrait-orc_peon.blp', happy = 'war3mapImported\\portrait-orc_peon.blp', })
+    -- (in the future, you could change actor_peon's portrait with 'actor_peon.portrait.angry', etc.)
+
+end
+
+function buildscreenplay()
+    --[[
+
+        there are two ways to build chained dialogue items:
+            1) simple:
+
+                using a table with index-values, build a dialogue chain
+                by inserting the text and actor (auto generating
+                each speech item automatically).
+
+                item format:
+                { text, actor [, emotion, anim, sound, func] }
+                { "My dialogue text.", actor_object [, "angry", "stand victory", sound_var, func_var] }
+
+                example:
+                    my_table = {
+                        [1] = { "Your character's dialogue", my_actor_object_a, "angry" },
+                        [2] = { "Your other character's dialogue", my_actor_object_b },
+                    }
+                    my_scene = scene.chain:build(my_table)
+
+            2) specified:
+
+                build each speech item separately. this can be useful
+                if you are going to add and remove speech items
+                yourself i.e. if user actions influence dialogue.
+
+                example:
+                    my_dynamic_item       = speak.item:new()
+                    my_dynamic_item.actor = my_actor_object_a
+                    my_dynamic_item.text  = "This is my dynamic dialogue."
+
+                    scene_01 = speak.chain:new()
+                    scene_01:add(some_other_item)
+                    scene_01:add(my_dynamic_item)
+                    scene_01:add(some_other_item)
+                    (...)
+
+                    you decide to remove it later based on a player's action and insert a different item:
+                        scene_01:remove(my_dynamic_item)
+    --]]
+
+    --[[
+        simple build example:
+            this method is useful for visually building screenplays,
+            allowing you to traverse them vertically as you would
+            pages from a normal screenplay in real life.
+    --]]
+
+    local spawngrunts = function()
+        -- create some grunts for the scene when the grunt calls for his squad:
+        local unit
+        unit = CreateUnit(Player(0), FourCC('ogru'), 700, 400, 0)
+        SetUnitInvulnerable(unit, true)
+        IssuePointOrderById(unit, 851986, 230, 75)
+        unit = CreateUnit(Player(0), FourCC('ogru'), 700, 380, 0)
+        SetUnitInvulnerable(unit, true)
+        IssuePointOrderById(unit, 851986, 465, -300)
+        unit = CreateUnit(Player(0), FourCC('ogru'), 700, 360, 0)
+        SetUnitInvulnerable(unit, true)
+        IssuePointOrderById(unit, 851986, 500, 0)
+    end
+
+    scene_01 = {
+        [1] = {
+            "Who goes there!?",
+            actor_footman,
+        },
+        [2] = {
+            "...",
+            actor_grunt,
+            "blush",
+            "stand two",
+            soundt.grunt01,
+        },
+        [3] = {
+            "What are you doing in Lordaeron, Horde filth?",
+            actor_footman,
+            "angry"
+        },
+        [4] = nil, -- left empty to demonstrate :add functionality.
+        [5] = {
+            "Wait, if there's one of you, then that means...",
+            actor_footman,
+            "blush",
+        },
+        [6] = {
+            "Form ranks!",
+            actor_grunt,
+            "angry",
+            "spell",
+            soundt.grunt02,
+            spawngrunts,
+        },
+        [7] = {
+            "Hah! You think you've outwitted the Alliance with sheer numbers? We Alliance are never alone!",
+            actor_footman,
+            "happy",
+        },
+        [8] = {
+            "...",
+            actor_footman,
+            "blush",
+        },
+        [9] = {
+            "Garland? Erik? Where are you fools?",
+            actor_footman,
+            "blush",
+        },
+        [10] = {
+            "It looks like your men have forsaken you, human. Typical Alliance cowardice!",
+            actor_grunt,
+            "happy",
+        },
+        [11] = {
+            "Fine! I'll take you all on myself!",
+            actor_footman,
+            "angry",
+            "stand defend",
+            soundt.footman01,
+        },
+        [12] = {
+            "Others would call you a fool, human. But, you have the courage of a warrior. This is no honorable way to die."
+            .." Stand back troops; we meet tomorrow on the battlefield. Lok'tar ogar!",
+            actor_grunt,
+        },
+        [13] = {
+            "So be it. Tomorrow we meet on the hills of steel and bone and flesh. And now I've run out of things to say so I'm"
+            .." just meandering on and on and on to test this dialogue system. Yea, I'm still going. And going, and going. Wow,"
+            .." can you believe this scrolling text frame even works? It probably could use a footprint though. I think you can"
+            .." even use your mousewheel to scroll up when it's done spamming you with awesome lore content, just in case you"
+            .." missed something important. Really, really important. You might not understand this map without it. If it ever"
+            .." finishes, that is. You better not click that continue button. Hey! How DARE you!",
+            actor_footman,
+        },
+    }
+    -- we take the table outline above and convert it to a chain of speech items:
+    scene_01 = speak.chain:build(scene_01)
+
+    --[[
+        specified example where we fill the empty [4] slot:
+    --]]
+
+    peon_flee01         = speak.item:new()
+    peon_flee01.text    = "Aaaggh!"     -- (required)
+    peon_flee01.actor   = actor_peon    -- (required)
+    peon_flee01.emotion = "none"        -- (optional)
+    peon_flee01.sound   = soundt.peon01 -- (optional)
+    peon_flee01.func    = function()    -- (optional)
+        -- in this example, we'll also add a function that runs when the dialogue item is played.
+        PauseUnit(peon_flee01.actor.unit, false)
+        IssuePointOrderById(peon_flee01.actor.unit, 851986, 735, 750)
+        UnitApplyTimedLifeBJ( 6.0, FourCC('BTLF'), peon_flee01.actor.unit )
+    end
+    -- insert into the nil [4] slot in scene_01:
+    scene_01:add(peon_flee01, 4)
+
+end[/code][/hidden]
+[COLOR=#ffffff]Gathering Multiple Screenplays:[/COLOR]
+[hidden]If you want to compartmentalize your scenes, you will need to wrap them in a newly-named build function.
+
+Then, insert them into the 'elapsed init' script as needed.
+
+Example:[code=lua]--[[
+    time elapsed init:
+--]]
+utils.timed(0.33, function()
+    utils.debugfunc(function()
+        --[[
+            sounds we play in the screenplay example:
+        --]]
+        soundt = {}
+        soundt.grunt01      = gg_snd_PeonWhat2
+        soundt.grunt02      = gg_snd_GruntWarcry1
+        soundt.peon01       = gg_snd_PeonPissed4
+        soundt.footman01    = gg_snd_FootmanYesAttack1
+        -- build after map init so we have a cached log with F12:
+        buildactors()
+        buildscreenplay()
+        -- to compartmentalize anything else, be sure insert additional build functions:
+        buildactors02() -- if you want to build other actors separately
+        buildscreenplay02() -- your other scene
+    end, "time elapsed init")
+end)[/code][/hidden]
+[COLOR=#ffffff]Example Scene Trigger (GUI):[/COLOR]
+[hidden][trigger]scene start
+    Events
+        Unit - A unit comes within 150.00 of Circle of Power (large) 0005 <gen>
+    Conditions
+        (Triggering unit) Equal to footman
+        speakactive Equal to False
+    Actions
+        Trigger - Turn off (This trigger)
+        Unit - Order (Triggering unit) to Stop.
+        -------- initialize camera: --------
+        Custom script:   speak.camtargetx = GetUnitX(udg_footman)
+        Custom script:   speak.camtargety = GetUnitY(udg_footman)
+        -------- begin scene: --------
+        Custom script:   SetUnitX(udg_footman, 100)
+        Custom script:   SetUnitY(udg_footman, -200)
+        Unit - Hide Circle of Power (large) 0005 <gen>
+        -------- Position units: --------
+        Custom script:   IssuePointOrderById(udg_footman, 851986, 61, -250)
+        Unit - Make footman face grunt over 0.33 seconds
+        Unit - Make peon face Footman 0000 <gen> over 0.33 seconds
+        Unit - Make grunt face Footman 0000 <gen> over 0.33 seconds
+        -------- begin scene: --------
+        Custom script:   utils.debugfunc( function()
+        Custom script:   speak:startscene(scene_01)
+        Custom script:   end, "dev")[/trigger][/hidden]
+[COLOR=#ffffff]Import Overview:[/COLOR]
+[hidden][code]Installation instructions:
+
+    1)  Copy the "import" folder and paste it into your map.
+
+    2)  Export the .fdf and .toc file from the Asset Manager (F12). Their file path names need to remain the same or you
+        will need to edit the BlzLoadTOCFile call under the 'speak init' script.
+
+        If you desire the included custom text, also export the 'consolas.ttf' file.
+
+        If you DO NOT want the included custom text, open the .toc file in a text editor and remove/uncomment lines as instructed
+        in the file.
+
+    3)  If you desire the demo graphics for testing purposes, export the character portraits from the Asset Manager (F12).
+
+        note: for steps 2 and 3, an "export all" option exists by right clicking a file or by going to File -> Export All Files
+        note: reminder that changed file strings for 2) and 3) will break things; make sure they match the demo's path naming.
+
+    4)  Copy the scene camera from the Camera Palette (sceneCam) OR create your own camera in your map and replace the variable
+        'self.scenecam' with your new camera object under 'speak:init()', which can be found under the 'speak' script file.
+
+    5)  Reference the function documentation and examples, then start building your scenes. Let me know if you encounter any
+        bugs or have any code or feature suggestions: Planetary @hiveworkshop.com[/code]
+[/hidden]
+[COLOR=#ffffff]Code Notes:[/COLOR]
+[hidden]This bundle was built with OOP-style class objects. Run methods on objects using [ljass]myobject:mymethod()[/ljass]. The screenplay build has examples of this syntax in use.
+
+This resource was tested to be net-code safe; however, it was designed with campaign/group use in mind (it currently runs for every player).[/hidden]
+[COLOR=#ffffff]FDF/TOC Files:[/COLOR]
+[hidden][code]TOC:
+
+UI\FrameDef\Glue\BattleNetTemplates.fdf
+war3mapImported\CustomFrameFDF.fdf
+
+FDF:
+
+Frame "TEXT" "CustomText" {
+    //DecorateFileNames,
+    //FrameFont "MasterFont", 0.018, "",
+    // to return to the default WC3 text, uncomment these lines above ^;
+    // then delete the FrameFont line below:
+    FrameFont "war3mapImported\consolas.ttf", 0.018, "",
+    FontJustificationH JUSTIFYLEFT,
+    FontJustificationV JUSTIFYTOP,
+    FontColor 1.0 1.0 1.0 1.0,
+    FontShadowColor 0.0 0.0 0.0 0.9,
+    FontShadowOffset 0.001 -0.001,
+}
+Frame "TEXTAREA" "CustomTextArea" {
+    //DecorateFileNames,
+    //FrameFont "MasterFont", 0.013, "",
+    // to return to the default WC3 text, uncomment these lines above ^;
+    // then delete the FrameFont line below:
+    FrameFont "war3mapImported\consolas.ttf", 0.013, "",
+    TextAreaLineHeight 0.008,
+    TextAreaLineGap 0.005,
+    TextAreaInset 0.00,
+    TextAreaMaxLines 128,
+}[/code][/hidden]
+[COLOR=#ffffff]Misc:[/COLOR]
+
+• Designed for 1.32+.
+• Additional credit to Bribe for Global Initialization + Timer Utils, and Tasyen's UI documentation.
+
+[COLOR=#ffffff]Version History:[/COLOR]
+
+• 1.0a - no code changes; updated in-game API docs.
+• 1.0b - no code changes; included description of custom font vs. default font in fdf import step.
+• 1.0c - no code changes; updated API docs with missing camera property descriptions.
+• 1.0d - fixed reported issue of 'fade = false' not hiding dialogue box on scene end.
+• 1.0e - no code changes; fixed some redundancies.
