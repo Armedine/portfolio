@@ -1,0 +1,26 @@
+[h1][color=#FDB814]Champions of Azeroth v1.0[/color] [color=#22ff00]Beta[/color][/h1]
+A fast-paced MOBA which attempts to bring classic Warcraft III units to life as themed heroes in a struggle between the Horde and the Alliance. Earn shared experience for your team, acquire unique items, and complete objectives to destroy the enemy's base.
+
+
+[h1][color=#FDB814]Features Overview:[/color][/h1]
+[h3][color=#FFFFFF]Fully Unique Hero Roster[/color][/h3]Seeing a copy-pasted Warcraft 3 spell is rare in this map. Almost every ability is trigger-driven and designed with a particular 'hook' in mind to fulfill each hero's fantasy. Become an agent of calamity who summons hordes of demons as the Eredar Warlock, or turn enemies into giant batteries and zap them with deadly combos as the Shaman.
+
+[h3][color=#FFFFFF]17 Unique Items Per Hero[/color][/h3]Ponder your strategy and build your character throughout the match with a personalized hero shop, earning 100 gold every 2 team levels. At level 14, choose from 1 of 6 [color=#09E5E5]elite[/color] items which grant you more powerful benefits than the standard catalog. Careful, once you spend your precious gold on an item there is no going back.
+
+[h3][color=#FFFFFF]Choose from 2 Ultimates[/color][/h3]You aren't restricted to a single ultimate choice. Choose from two powerful abilities designed with specific strategies in mind when you reach level 10 as a team.
+
+[h3][color=#FFFFFF]Map Objectives[/color][/h3]Duke it out in the Duel of Champions as two faction heroes channel powerful magic near the center of the battlefield. The first team to defeat the enemy's champion recruits theirs to push each lane.
+
+[h3][color=#FFFFFF]Shared Team Leveling[/color][/h3]Inspired by [abbr=Heroes of the Storm]HotS[/abbr], you progress through hero levels as a team with globally-shared experience. Complete objectives, defeat enemy minions, and venture into the forest to defeat encampments to earn experience for your faction.
+
+[h3][color=#FFFFFF]Mobility First[/color][/h3]Terrain navigation is designed with mobility as a prime component. Spend less time idly walking from point A to point B and get back into the action faster using your [color=#09E5E5]Scroll of Town Portal (T)[/color] and by traveling to specific lanes with your faction's [color=#09E5E5]Flight Master[/color] (located near your starting location).
+
+[h3][color=#FFFFFF]Capture Enemy Bases[/color][/h3]Progress through each lane by capturing enemy bases and converting them into outposts for your team and extending the reach of your Flight Masters.
+
+[h3][color=#FFFFFF]Conquer Forest Camps[/color][/h3]Head out into your faction's forest (or invade the enemy's) to do battle with forest creatures of varying power. Defeating a forest creature adds it to your wave of Siege Units (which occurs every 3rd minion wave), bolstering your forces as you push the top and bottom lane. It is said that some of the more prominent creatures offer enhancement [color=#09E5E5]buffs[/color] to the hero that defeats them.
+
+[h3][color=#FFFFFF]Role-Based Class System[/color][/h3]Choose to deal damage, soak damage, heal damage, or push lanes as you take advantage of a simplified class structure including Mage, Eliminator, Warrior, Builder, Warrior and Tank, with each hero designed with their role in mind.
+
+[h3][color=#FFFFFF]Practice vs. AI[/color][/h3]Load up rudimentary agents with the [color=#09E5E5]-ai[/color] command to get a feel for the map and experiment with hero builds. Be warned, they aren't perfect!
+
+[h3][color=#FFFFFF]Mode Support[/color][/h3]Some basic modes have been added to alter the game flow, which can be enabled by the host (P1). Disable flight paths with the [color=#09E5E5]-nfp[/color] command to greatly limit the mobility of heroes, or increase experience gain with the [color=#09E5E5]-fm[/color] command to make for a faster match. Make all faction heroes available to both teams with the [color=#09E5E5]-uf[/color] command.

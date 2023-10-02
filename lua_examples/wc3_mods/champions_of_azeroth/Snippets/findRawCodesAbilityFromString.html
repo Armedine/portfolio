@@ -1,0 +1,13 @@
+<html>
+<head>
+<script>
+var input = ``
+var reg = /(\sA[A-Z0-9]{3}\s)/g;
+var result;
+while((result = reg.exec(input)) !== null) {
+    console.log(result[0]);
+}
+console.log('ran')
+</script>
+</head>
+</html>

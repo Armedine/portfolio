@@ -1,0 +1,14 @@
+<html>
+<head>
+<script>
+var input = `
+`
+var reg = /([oOhHuUeEnN]0[a-zA-Z0-9]{2})/g;
+var result;
+while((result = reg.exec(input)) !== null) {
+    console.log(result[0]);
+}
+console.log('ran')
+</script>
+</head>
+</html>

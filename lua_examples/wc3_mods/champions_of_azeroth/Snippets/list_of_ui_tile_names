@@ -1,0 +1,16 @@
+UI\Console\Human\HumanUITile01
+
+humanuitile-timeindicatorframe
+
+UI\Console\Human\HumanUITile-TimeIndicatorFrame.blp
+
+UI\Console\Undead\UndeadUITile-TimeIndicatorFrame.blp
+
+UI\Console\NightElf\NightElfUITile-TimeIndicatorFrame.blp
+
+UI\Console\Orc\OrcUITile-TimeIndicatorFrame.blp
+
+
+UI\Console\Orc\OrcUITile01
+UI\Console\NightElf\NightElfUITile01.blp
+UI\Console\Undead\UndeadUITile01.blp
