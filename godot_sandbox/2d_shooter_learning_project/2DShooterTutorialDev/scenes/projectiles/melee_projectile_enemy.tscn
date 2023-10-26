@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc47b62iijkjr"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/melee_projectile.gd" id="1_015ks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c85wd"]
+radius = 24.0
+
+[node name="Node2D" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_015ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.57079
+shape = SubResource("CircleShape2D_c85wd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

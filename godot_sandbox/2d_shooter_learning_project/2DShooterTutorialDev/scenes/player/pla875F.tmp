@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://fnu6cqoo0gsw"]
+
+[ext_resource type="Texture2D" uid="uid://dn73k7hopscs8" path="res://graphics/player/player.png" id="1_hxtcs"]
+[ext_resource type="Script" path="res://scenes/player/player_controller.gd" id="1_r1fuv"]
+[ext_resource type="PackedScene" uid="uid://d2gt1nw05xnsv" path="res://scenes/projectiles/laser_particles.tscn" id="2_axex7"]
+[ext_resource type="AudioStream" uid="uid://fpo4uexauxkk" path="res://audio/solid_impact.ogg" id="4_mwcuk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vf68l"]
+radius = 64.4438
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wk8wb"]
+polygon = PackedVector2Array(-97.9675, -10.8858, -92.5248, -25.853, -84.3608, -40.8203, -74.8361, -44.9022, -63.9508, -46.2628, -59.8688, -51.7054, -51.7048, -55.7874, -40.8195, -57.148, -29.9342, -59.8692, -24.4916, -55.7872, -13.6063, -61.2298, -6.80302, -55.7871, 0.000241467, -47.6231, 9.52482, -38.0985, 13.6067, -27.2131, 28.574, -23.1311, 34.0166, -14.9671, 42.1805, -9.52441, 53.0658, -9.52436, 62.5904, -4.08167, 74.8363, 0.000379447, 87.0823, 5.44308, 96.6069, 9.52512, 97.9675, 23.1317, 92.5248, 32.6563, 76.1968, 32.6562, 69.3935, 40.8202, 59.8688, 44.9021, 59.8688, 51.7054, 54.4262, 54.4267, 32.6556, 54.4266, 25.8523, 50.3446, 23.131, 42.1806, 6.80309, 42.1805, -38.0988, 59.8689, -53.0661, 62.5901, -68.0333, 55.7868, -73.4759, 44.9014, -78.9185, 34.0161, -84.3611, 29.9341, -87.0824, 24.4915, -88.443, 17.6881, -95.2463, 5.44216)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+rotation = 6.28318
+scale = Vector2(0.734937, 0.734937)
+collision_mask = 29
+script = ExtResource("1_r1fuv")
+
+[node name="LaserParticle" parent="." instance=ExtResource("2_axex7")]
+position = Vector2(93.8855, 20.4104)
+
+[node name="PlayerImage" type="Sprite2D" parent="."]
+position = Vector2(1.36065, 1.36067)
+rotation = 1.5708
+texture = ExtResource("1_hxtcs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-35.3772, -0.000314328)
+shape = SubResource("CircleShape2D_vf68l")
+
+[node name="TimerShoot" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="TimerNade" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TimerFootstep" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="ProjectileLaunchPoint" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="ProjectileLaunchPoint"]
+position = Vector2(29.9344, 13.6069)
+
+[node name="Marker2D2" type="Marker2D" parent="ProjectileLaunchPoint"]
+position = Vector2(32.6557, 20.4102)
+
+[node name="Marker2D3" type="Marker2D" parent="ProjectileLaunchPoint"]
+position = Vector2(29.9343, 27.2135)
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(0.7, 0.7)
+position_smoothing_speed = 40.0
+rotation_smoothing_speed = 25.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_as_relative = false
+occluder = SubResource("OccluderPolygon2D_wk8wb")
+
+[node name="SoundFootstep" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mwcuk")
+volume_db = -12.0
+pitch_scale = 1.7
+max_polyphony = 2
+
+[connection signal="timeout" from="TimerShoot" to="." method="_on_timer_shoot_timeout"]
+[connection signal="timeout" from="TimerNade" to="." method="_on_timer_nade_timeout"]
+[connection signal="finished" from="SoundFootstep" to="." method="_on_sound_footstep_finished"]

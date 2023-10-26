@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://bm7dsrx2unjp2"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/laser.gd" id="1_gcrwt"]
+[ext_resource type="Texture2D" uid="uid://bd7q23rx2dias" path="res://graphics/projectiles/blue.png" id="1_wcrgg"]
+[ext_resource type="AudioStream" uid="uid://dcc3kk476ppxw" path="res://audio/laser.wav" id="3_gandf"]
+[ext_resource type="Texture2D" uid="uid://qgcf73kcan7g" path="res://graphics/lights/textures/circle.png" id="4_x33b5"]
+[ext_resource type="Texture2D" uid="uid://b2qtta6b1bdgm" path="res://graphics/explosions/explosion_2.png" id="5_d60bg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lx3lu"]
+radius = 8.0
+height = 160.0
+
+[sub_resource type="Animation" id="Animation_17u7w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserCollideExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_uq2s3"]
+resource_name = "laser_collision"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserCollideExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 63]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserCollideExplosion:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LaserCollideLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 12.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0purn"]
+_data = {
+"RESET": SubResource("Animation_17u7w"),
+"laser_collision": SubResource("Animation_uq2s3")
+}
+
+[node name="Laser" type="Area2D"]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_gcrwt")
+
+[node name="LaserSprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_wcrgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_lx3lu")
+
+[node name="SoundLaser" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gandf")
+volume_db = -12.381
+pitch_scale = 1.2
+autoplay = true
+
+[node name="PointLightFeintBlue" type="PointLight2D" parent="."]
+color = Color(0, 1, 1, 1)
+energy = 2.0
+range_layer_min = -1
+range_layer_max = 2
+texture = ExtResource("4_x33b5")
+texture_scale = 0.7
+
+[node name="LaserCollideLight" type="PointLight2D" parent="."]
+position = Vector2(72, 0)
+color = Color(1, 0.627451, 0.286275, 1)
+energy = 0.0
+range_layer_min = -1
+range_layer_max = 2
+texture = ExtResource("4_x33b5")
+texture_scale = 0.3
+
+[node name="LaserCollideExplosion" type="Sprite2D" parent="."]
+position = Vector2(56, 0)
+texture = ExtResource("5_d60bg")
+hframes = 8
+vframes = 8
+
+[node name="CollideAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0purn")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

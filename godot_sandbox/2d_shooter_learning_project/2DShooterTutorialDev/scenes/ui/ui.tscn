@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy6m2tpseqyt7"]
+
+[ext_resource type="Texture2D" uid="uid://clfr46umhswp2" path="res://graphics/ui/bullet.png" id="1_105uh"]
+[ext_resource type="Theme" uid="uid://d30nv2wm4r8w1" path="res://scenes/ui/main_theme.tres" id="1_d3tcd"]
+[ext_resource type="Texture2D" uid="uid://bmm11yehtxqfd" path="res://graphics/ui/grenade.png" id="2_14nwq"]
+[ext_resource type="Texture2D" uid="uid://br3ulmb4543gt" path="res://graphics/ui/progress_bar/bg.png" id="4_67g84"]
+[ext_resource type="Texture2D" uid="uid://c74dt7fdn1whu" path="res://graphics/ui/progress_bar/over.png" id="5_oxc6i"]
+[ext_resource type="Texture2D" uid="uid://dd5dtm4r0s7we" path="res://graphics/ui/progress_bar/progress.png" id="6_y5svf"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="MarginContainerHealth" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -159.0
+offset_top = -77.0
+offset_right = 159.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainerHealth"]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("4_67g84")
+texture_over = ExtResource("5_oxc6i")
+texture_progress = ExtResource("6_y5svf")
+
+[node name="Label" type="Label" parent="MarginContainerHealth/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -63.0
+offset_right = 70.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_d3tcd")
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainerWeapon" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -136.0
+offset_right = 32.0
+offset_bottom = -136.0
+grow_vertical = 0
+
+[node name="PrimaryWeaponCounter" type="Control" parent="MarginContainerWeapon"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerWeapon/PrimaryWeaponCounter"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="MarginContainerWeapon/PrimaryWeaponCounter/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_d3tcd")
+text = "100"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainerWeapon/PrimaryWeaponCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_105uh")
+expand_mode = 4
+
+[node name="SecondaryWeaponCounter" type="Control" parent="MarginContainerWeapon"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainerWeapon/SecondaryWeaponCounter"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 0
+offset_left = 72.0
+offset_right = 112.0
+offset_bottom = 74.0
+theme_override_constants/separation = 11
+
+[node name="Label" type="Label" parent="MarginContainerWeapon/SecondaryWeaponCounter/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_d3tcd")
+text = "2"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainerWeapon/SecondaryWeaponCounter/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_14nwq")
+expand_mode = 4

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnjm6ofx7sirc"]
+
+[ext_resource type="Script" path="res://scenes/enemies/moving_drone.gd" id="1_vlof1"]
+[ext_resource type="PackedScene" uid="uid://bgu2ssefdhmk0" path="res://scenes/enemies/enemy_drone.tscn" id="2_gqg66"]
+
+[node name="MovingDrone" type="Node2D"]
+script = ExtResource("1_vlof1")
+
+[node name="EnemyDrone" parent="." instance=ExtResource("2_gqg66")]

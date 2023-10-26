@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3u6dsohgokrg"]
+
+[ext_resource type="Script" path="res://scenes/container/item_container.gd" id="1_cao6v"]
+[ext_resource type="Texture2D" uid="uid://qgcf73kcan7g" path="res://graphics/lights/textures/circle.png" id="2_7w3ff"]
+
+[node name="ItemContainer" type="StaticBody2D" groups=["Container"]]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_cao6v")
+
+[node name="BaseSprite" type="Sprite2D" parent="."]
+
+[node name="LidSprite" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.576471, 0.945098, 0.0862745, 1)
+energy = 1.5
+texture = ExtResource("2_7w3ff")

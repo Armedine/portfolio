@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvfggr6ub721h"]
+
+[ext_resource type="Script" path="res://scenes/objects/house.gd" id="1_wiu08"]
+[ext_resource type="PackedScene" uid="uid://bra2ih3yisgiu" path="res://scenes/lights/simple_light.tscn" id="2_dqee5"]
+[ext_resource type="TileSet" uid="uid://c0qt6x5b3jeku" path="res://scenes/tilesets/internal_building.tres" id="2_oet3o"]
+[ext_resource type="PackedScene" uid="uid://6ioocicu63w7" path="res://scenes/lights/fan_light_shadow.tscn" id="3_c5p84"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7k3r"]
+size = Vector2(1145, 1145)
+
+[node name="House" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_wiu08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 155.5)
+shape = SubResource("RectangleShape2D_g7k3r")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(0.4, 0.4)
+tile_set = ExtResource("2_oet3o")
+format = 2
+layer_0/name = "HouseFloor"
+layer_0/tile_data = PackedInt32Array(-131070, 65538, 1, -131071, 65538, 1, -131072, 65538, 1, -65537, 65538, 1, -65538, 65538, 1, -65539, 65538, 1, -3, 65538, 1, 65533, 65538, 1, 131069, 65538, 1, 196605, 65538, 1, 196606, 65538, 1, 196607, 65538, 1, 131072, 65538, 1, 131073, 65538, 1, 196609, 65538, 1, 131074, 65538, 1, 65538, 65538, 1, 2, 65538, 1, -65534, 65538, 1, -65535, 65538, 1, -65536, 65538, 1, -1, 65538, 1, -2, 65538, 1, 65534, 65538, 1, 131070, 65538, 1, 131071, 65538, 1, 65536, 65538, 1, 0, 65538, 1, 65535, 65538, 1, 1, 65538, 1, 65537, 65538, 1, 196610, 65538, 1, 196608, 65538, 1, 262143, 65538, 1, 262142, 65538, 1, 262141, 65538, 1, 262140, 2, 3, 196604, 2, 3, 131068, 2, 3, 65532, 2, 3, -4, 2, 3, -65540, 2, 3, 196611, 65538, 3, 131075, 65538, 3, 65539, 65538, 3, 3, 65538, 3, -65533, 65538, 3, -131069, 65538, 3, -196605, 131074, 0, -131076, 2, 0, 327676, 2, 2, 262147, 131074, 2, 327677, 131074, 4, 327678, 131074, 4, 262145, 131074, 4, 262146, 131074, 4, -131075, 131074, 3, -131074, 131074, 3, -131073, 131074, 3, -196608, 131074, 3, -196607, 131074, 3, -196606, 131074, 3, 327679, 131074, 4, 262144, 131074, 4)
+layer_1/name = "HouseWallsInner"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(131075, 393218, 7, -65533, 393218, 7, 196604, 262146, 7, -4, 262146, 7, -3, 196610, 7, 196605, 196610, 7, 131074, 131074, 8, -65534, 131074, 8, -65539, 196610, 6, -131070, 196610, 6, -131069, 393218, 7, -65540, 262146, 7, -131075, 327682, 6, -196606, 327682, 6, 65533, 65538, 6, 131069, 65538, 6, 2, 65538, 6, 65538, 65538, 6, -65538, 2, 6, -65537, 2, 6, -131072, 2, 6, -131071, 2, 6, 262141, 65538, 6, 196610, 65538, 6, 327677, 327682, 8, 262146, 327682, 8)
+layer_2/name = "HouseWallsOuter"
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array(196611, 327682, 1, 131075, 327682, 1, 65539, 327682, 1, -65533, 327682, 1, -131069, 327682, 1, 262140, 327682, 1, 196604, 327682, 1, 131068, 327682, 1, 65532, 327682, 1, -4, 327682, 1, -65540, 327682, 1, 327676, 196610, 2, 262147, 327682, 2, -131075, 262146, 0, -131074, 262146, 0, -131073, 262146, 0, -196608, 262146, 0, -196607, 262146, 0, -196606, 262146, 0, -131076, 196610, 0, 262146, 262146, 2, 262145, 262146, 2, 327678, 262146, 2, 327677, 262146, 2, -196605, 327682, 0, 3, 327682, 1, 262144, 393218, 4, 327679, 393218, 3)
+
+[node name="SimpleLight" parent="." instance=ExtResource("2_dqee5")]
+position = Vector2(-496, 104)
+rotation = -1.57079
+
+[node name="SimpleLight2" parent="." instance=ExtResource("2_dqee5")]
+position = Vector2(496, 104)
+rotation = 1.57079
+
+[node name="AnimatedFanLightShadow2" parent="." instance=ExtResource("3_c5p84")]
+position = Vector2(-357, -232)
+
+[node name="AnimatedFanLightShadow3" parent="." instance=ExtResource("3_c5p84")]
+position = Vector2(-1.00003, -232)
+
+[node name="AnimatedFanLightShadow4" parent="." instance=ExtResource("3_c5p84")]
+position = Vector2(359, -232)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

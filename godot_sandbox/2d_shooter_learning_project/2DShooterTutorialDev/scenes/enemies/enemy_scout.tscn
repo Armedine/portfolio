@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvq5kwlkw3nr6"]
+
+[ext_resource type="PackedScene" uid="uid://c15x6i2ghl0bx" path="res://scenes/enemies/enemy_blueprint.tscn" id="1_575tn"]
+[ext_resource type="Texture2D" uid="uid://c2hf6wbnpufxe" path="res://graphics/enemies/scout.png" id="1_mg7ft"]
+[ext_resource type="Shader" path="res://scenes/enemies/enemy_blueprint.gdshader" id="2_3ajra"]
+[ext_resource type="PackedScene" uid="uid://bobbior2e0c7k" path="res://scenes/weapons/weapon_blueprint.tscn" id="3_fsbrl"]
+[ext_resource type="PackedScene" uid="uid://c88htfmvk5nux" path="res://scenes/projectiles/enemy_small_laser.tscn" id="4_u21al"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0uxpi"]
+resource_local_to_scene = true
+shader = ExtResource("2_3ajra")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/progress = 0.0
+
+[node name="EnemyScout" node_paths=PackedStringArray("weapon") instance=ExtResource("1_575tn")]
+weapon = NodePath("WeaponBlueprint")
+
+[node name="EnemySprite" parent="." index="1"]
+material = SubResource("ShaderMaterial_0uxpi")
+position = Vector2(8, 32)
+rotation = 1.57079
+texture = ExtResource("1_mg7ft")
+
+[node name="EnemyDetection" parent="." index="2"]
+metadata/_edit_lock_ = true
+
+[node name="DetectionRadius" parent="EnemyDetection" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="ProjectileLaunchPoint" parent="." index="3"]
+position = Vector2(72, -24)
+
+[node name="ProjectileLaunchPoint2" type="Marker2D" parent="." index="4"]
+position = Vector2(80, 16)
+
+[node name="WeaponBlueprint" parent="." index="6" node_paths=PackedStringArray("launch_points", "weapon_owner") instance=ExtResource("3_fsbrl")]
+position = Vector2(-24, 8)
+launch_points = [NodePath("../ProjectileLaunchPoint"), NodePath("../ProjectileLaunchPoint2")]
+weapon_owner = NodePath("..")
+projectile = ExtResource("4_u21al")

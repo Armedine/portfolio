@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuw4a3n2t3bk3"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_scout.gd" id="1_ll7rr"]
+[ext_resource type="Texture2D" uid="uid://c2hf6wbnpufxe" path="res://graphics/enemies/scout.png" id="1_mg7ft"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plg83"]
+radius = 56.0
+
+[node name="Scout" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 15
+script = ExtResource("1_ll7rr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, 24)
+rotation = 1.5708
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_mg7ft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_plg83")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://crvvcbiq5o46p"]
+
+[ext_resource type="PackedScene" uid="uid://d3u6dsohgokrg" path="res://scenes/container/item_container.tscn" id="1_nos7d"]
+[ext_resource type="Script" path="res://scenes/container/crate.gd" id="2_jyxw1"]
+[ext_resource type="Texture2D" uid="uid://xm3w0l4yxeh6" path="res://graphics/objects/box/base.png" id="2_khbaj"]
+[ext_resource type="Texture2D" uid="uid://bttlm53525ib2" path="res://graphics/objects/box/lid.png" id="3_syk8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lolbx"]
+size = Vector2(384, 160)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k6ecs"]
+polygon = PackedVector2Array(11.4286, -57.1429, -4.28571, -38.5714, -4.28571, 37.1429, 10, 57.1429, -9.99999, 37.1429, -9.99999, -38.5714)
+
+[node name="Crate" instance=ExtResource("1_nos7d")]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("2_jyxw1")
+
+[node name="BaseSprite" parent="." index="0"]
+rotation = -1.57079
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_khbaj")
+
+[node name="LidSprite" parent="." index="1"]
+rotation = -1.57079
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_syk8r")
+
+[node name="CollisionShape2D" parent="." index="2"]
+rotation = -1.57079
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_lolbx")
+
+[node name="PointLight2D" parent="." index="3"]
+position = Vector2(45.7143, 0)
+energy = 10.0
+shadow_enabled = true
+shadow_item_cull_mask = 4
+texture_scale = 0.12
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PointLight2D" index="0"]
+scale = Vector2(1, 1)
+occluder = SubResource("OccluderPolygon2D_k6ecs")
+occluder_light_mask = 4

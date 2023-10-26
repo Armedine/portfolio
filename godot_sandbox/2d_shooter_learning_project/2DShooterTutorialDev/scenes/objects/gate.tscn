@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://kche7th4ya3x"]
+
+[ext_resource type="Texture2D" uid="uid://tfpvuel14jfx" path="res://graphics/objects/gate.png" id="1_au80f"]
+
+[node name="Gate" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 11
+
+[node name="Gate" type="Sprite2D" parent="."]
+position = Vector2(352, -344)
+scale = Vector2(0.561538, 0.561538)
+texture = ExtResource("1_au80f")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-456, -784, 1232, -784, 1224, -32, 1136, 88, 626.899, 85.3205, 624, 0, 152, 0, 145.636, 82.7875, -384, 80, -456, -40)
